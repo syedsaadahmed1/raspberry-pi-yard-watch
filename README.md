@@ -91,6 +91,21 @@ Run `docker compose config` before every deploy. The `stable` tag tracks the
 current stable release; for repeatable production upgrades, replace it with a
 tested version tag and update intentionally.
 
+## Publish to GitHub
+
+This repository has no remote by default. Create an **empty** GitHub repository
+named `pi-yard-watch` (do not add a README, license, or `.gitignore`), then run:
+
+```bash
+git remote add origin git@github.com:YOUR_GITHUB_USER/pi-yard-watch.git
+git push -u origin main
+```
+
+If you use HTTPS instead of SSH, use
+`https://github.com/YOUR_GITHUB_USER/pi-yard-watch.git` and authenticate with a
+credential helper or personal access token—never paste a token into a remote URL.
+Confirm tracked files with `git status` and `git ls-files` before the first push.
+
 ## Notifications and optional offload
 
 See [docs/notifications.md](docs/notifications.md) for native phone WebPush and
