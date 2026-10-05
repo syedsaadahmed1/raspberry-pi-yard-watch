@@ -1,0 +1,20 @@
+name: Validate
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  static:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Validate shell syntax
+        run: bash -n scripts/*.sh
+      - name: Run ShellCheck
+        run: shellcheck scripts/*.sh
+      - name: Render Compose configuration
+        run: cp .env.example .env && cp config/config.example.yml config/config.yml && docker compose config --quiet
