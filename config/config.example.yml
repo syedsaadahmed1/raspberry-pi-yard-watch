@@ -1,0 +1,81 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/blakeblackshear/frigate/master/docker/main/rootfs/opt/frigate/config/schema.json
+
+mqtt:
+  enabled: false
+
+# The default detector in current Frigate releases is CPU-backed OpenVINO.
+# Do not add a legacy `cpu` detector block.
+
+objects:
+  track:
+    - person
+
+record:
+  enabled: true
+  continuous:
+    days: 0
+  motion:
+    days: 1
+  alerts:
+    retain:
+      days: 7
+      mode: motion
+  detections:
+    retain:
+      days: 7
+      mode: motion
+
+snapshots:
+  enabled: true
+  timestamp: true
+  bounding_box: true
+  crop: false
+  required_zones:
+    - yard
+  retain:
+    default: 3
+    objects:
+      person: 7
+
+go2rtc:
+  streams:
+    yard_camera:
+      # video=0 maps to /dev/video0 inside the container. MJPEG is broadly
+      # compatible; diagnose-camera.sh shows what your webcam actually supports.
+      - "ffmpeg:device?video=0&video_size=1280x720&framerate=15&input_format=mjpeg#video=h264"
+
+cameras:
+  yard_camera:
+    enabled: true
+    ffmpeg:
+      inputs:
+        - path: rtsp://127.0.0.1:8554/yard_camera
+          input_args: preset-rtsp-restream
+          roles:
+            - detect
+            - record
+    detect:
+      enabled: true
+      width: 1280
+      height: 720
+      fps: 5
+    review:
+      alerts:
+        required_zones:
+          - yard
+      detections:
+        required_zones:
+          - yard
+    zones:
+      # Full-frame bootstrap polygon. Replace this in the Frigate UI so public
+      # paths, neighbors, and moving foliage are excluded from your yard zone.
+      yard:
+        friendly_name: Yard
+        coordinates: 0.001,0.001,0.999,0.001,0.999,0.999,0.001,0.999
+        objects:
+          - person
+    motion:
+      threshold: 30
+      contour_area: 10
+
+version: 0.16-0
