@@ -1,0 +1,15 @@
+.env
+/AGENTS.md
+/sources/
+docker-compose.override.yml
+compose.override.yml
+config/config.yml
+config/*.db
+config/*.db-*
+config/model_cache/
+storage/
+*.log
+*.bak
+.DS_Store
+.idea/
+.vscode/
