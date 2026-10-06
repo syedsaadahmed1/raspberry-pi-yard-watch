@@ -6,6 +6,15 @@ Use a 64-bit Raspberry Pi OS release and update it before deployment. Mount the
 SSD at a stable path (for example `/srv/pi-yard-watch`) using its filesystem UUID,
 then clone the repository there. Avoid placing recordings on the microSD card.
 
+After cloning, run the Phase 1 host audit:
+
+```bash
+./scripts/phase1-readiness.sh
+```
+
+Resolve all failures before continuing. Warnings identify items that require a
+human decision or may be acceptable for a development-only host.
+
 Install Docker Engine and its Compose plugin from Docker's current Debian
 instructions. Add your user to the `docker` group only if you accept that members
 of that group effectively have root-equivalent control of the host.

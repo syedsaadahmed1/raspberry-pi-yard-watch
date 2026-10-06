@@ -37,7 +37,10 @@ docs/                        Deployment, notifications, offload, security
 scripts/setup.sh             Host checks and local configuration
 scripts/validate.sh          Static and live validation
 scripts/diagnose-camera.sh   Enumerate webcam modes
+scripts/phase1-readiness.sh  Verify the Pi host before deployment
 ```
+
+See [ROADMAP.md](ROADMAP.md) for the phased implementation plan and exit criteria.
 
 ## Quick start on the Pi
 
@@ -94,15 +97,16 @@ tested version tag and update intentionally.
 ## Publish to GitHub
 
 This repository has no remote by default. Create an **empty** GitHub repository
-named `pi-yard-watch` (do not add a README, license, or `.gitignore`), then run:
+named `raspberry-pi-yard-watch` (do not add a README, license, or `.gitignore`),
+then run:
 
 ```bash
-git remote add origin git@github.com:YOUR_GITHUB_USER/pi-yard-watch.git
+git remote add origin git@github.com:YOUR_GITHUB_USER/raspberry-pi-yard-watch.git
 git push -u origin main
 ```
 
 If you use HTTPS instead of SSH, use
-`https://github.com/YOUR_GITHUB_USER/pi-yard-watch.git` and authenticate with a
+`https://github.com/YOUR_GITHUB_USER/raspberry-pi-yard-watch.git` and authenticate with a
 credential helper or personal access token—never paste a token into a remote URL.
 Confirm tracked files with `git status` and `git ls-files` before the first push.
 
