@@ -109,8 +109,8 @@ Adapt paths to your host. Test restoration periodically.
   to `video`, log in again, and confirm the Compose device mapping.
 - No video: compare the go2rtc source with `diagnose-camera.sh` output. Try a
   supported size, frame rate, and format.
-- `Bus error`: check logs, process limits, and shared memory. One 720p camera fits
-  the provided 128 MB with headroom, but increase it if diagnostics justify it.
+- `Bus error`: check logs, process limits, and shared memory. The provided 192 MB
+  baseline covers the tested 720p camera; increase it if diagnostics justify it.
 - High load: lower camera input FPS, detect FPS, or resolution; avoid unnecessary
   transcoding; then consider the GMKtec or a supported accelerator.
 - SSD fills: reduce motion/event retention and inspect unexpected constant motion.

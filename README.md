@@ -73,7 +73,7 @@ on alerts. Zone membership uses the bottom-center of a person's bounding box.
 - alerts, detections, and snapshots require the `yard` zone
 - no continuous retention; motion segments for 1 day
 - alert/detection recordings and person snapshots for 7 days
-- 128 MB shared memory and a 512 MB RAM-backed segment cache
+- 192 MB shared memory and a 512 MB RAM-backed segment cache
 - MQTT and native notifications disabled until deliberately configured
 
 Actual storage use varies with scene motion, codec, bitrate, and webcam. Watch the

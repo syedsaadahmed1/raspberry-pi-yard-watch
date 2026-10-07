@@ -6,7 +6,7 @@ services:
     image: "${FRIGATE_IMAGE:-ghcr.io/blakeblackshear/frigate:stable}"
     restart: unless-stopped
     stop_grace_period: 30s
-    shm_size: "${FRIGATE_SHM_SIZE:-128mb}"
+    shm_size: "${FRIGATE_SHM_SIZE:-192mb}"
     devices:
       - "${CAMERA_DEVICE:-/dev/video0}:/dev/video0"
     volumes:
