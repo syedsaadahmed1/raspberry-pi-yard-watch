@@ -42,7 +42,7 @@ go2rtc:
     yard_camera:
       # video=0 maps to /dev/video0 inside the container. MJPEG is broadly
       # compatible; diagnose-camera.sh shows what your webcam actually supports.
-      - "ffmpeg:device?video=0&video_size=1280x720&framerate=15&input_format=mjpeg#video=h264"
+      - "ffmpeg:device?video=0&video_size=1280x720&framerate=30&input_format=mjpeg#video=h264"
 
 cameras:
   yard_camera:

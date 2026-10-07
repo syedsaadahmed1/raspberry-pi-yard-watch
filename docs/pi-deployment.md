@@ -40,7 +40,7 @@ ls -l /dev/v4l/by-id/
 `/dev/video0` can change after reboots. Prefer a `/dev/v4l/by-id/...` symlink in
 `.env` when one exists. This machine-specific path belongs only in `.env`.
 
-Confirm the webcam supports the template's MJPEG 1280×720 at 15 FPS. If it does
+Confirm the webcam supports the template's MJPEG 1280×720 at 30 FPS. If it does
 not, edit the `go2rtc` source, `detect.width`, and `detect.height` together. YUYV
 at high resolution consumes far more USB bandwidth than MJPEG.
 

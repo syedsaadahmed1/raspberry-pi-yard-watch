@@ -7,8 +7,8 @@ criteria are verified on the target hardware.
 ## Current status
 
 - [x] Phase 0 — Repository foundation
-- [ ] Phase 1 — Raspberry Pi host preparation **(current)**
-- [ ] Phase 2 — Webcam characterization
+- [x] Phase 1 — Raspberry Pi host preparation
+- [ ] Phase 2 — Webcam characterization **(current)**
 - [ ] Phase 3 — First Frigate deployment
 - [ ] Phase 4 — Yard-zone and detection tuning
 - [ ] Phase 5 — Performance and retention testing
@@ -49,6 +49,11 @@ Exit criteria:
 - Docker and `docker compose` work for the deployment user;
 - webcam character devices are visible;
 - repository is cloned on the SSD with a clean `main` branch.
+
+Status: **Complete.** Verified on a Raspberry Pi 5 with 8 GB RAM, Debian 13
+(64-bit), a 128 GB NVMe root filesystem, Docker Engine and Compose, and the USB
+webcam attached. The host passed the readiness audit before and after a kernel
+update and controlled reboot.
 
 ## Phase 2 — Webcam characterization
 
