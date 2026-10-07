@@ -8,8 +8,8 @@ criteria are verified on the target hardware.
 
 - [x] Phase 0 — Repository foundation
 - [x] Phase 1 — Raspberry Pi host preparation
-- [ ] Phase 2 — Webcam characterization **(current)**
-- [ ] Phase 3 — First Frigate deployment
+- [x] Phase 2 — Webcam characterization
+- [ ] Phase 3 — First Frigate deployment **(current)**
 - [ ] Phase 4 — Yard-zone and detection tuning
 - [ ] Phase 5 — Performance and retention testing
 - [ ] Phase 6 — Phone notifications
@@ -64,6 +64,11 @@ update and controlled reboot.
 
 Exit criteria: the chosen device path and video mode work after a reboot and do
 not expose machine-specific identifiers in Git.
+
+Status: **Complete.** The attached USB webcam exposes a stable by-ID path and
+supports MJPEG at 1280×720 and 30 FPS. That mode passed a live capture test after
+the Phase 1 reboot. Its machine-specific path is stored only in the ignored local
+`.env` file.
 
 ## Phase 3 — First Frigate deployment
 
