@@ -68,7 +68,7 @@ on alerts. Zone membership uses the bottom-center of a person's bounding box.
 
 ## Defaults and retention
 
-- one 1280×720 webcam stream; detection sampled at 5 FPS
+- one 1280×720 webcam stream encoded at 10 FPS; detection sampled at 3 FPS
 - only the `person` object label
 - alerts, detections, and snapshots require the `yard` zone
 - no continuous retention; motion segments for 1 day

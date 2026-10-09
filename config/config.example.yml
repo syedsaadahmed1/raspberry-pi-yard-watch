@@ -38,11 +38,18 @@ snapshots:
       person: 7
 
 go2rtc:
+  ffmpeg:
+    # The webcam must be opened at a supported 30 FPS mode. Limit the encoded
+    # restream to 10 FPS and about 2 Mbps to reduce Pi CPU and SSD consumption.
+    yard_h264: >-
+      -c:v libx264 -vf fps=10 -b:v 2M -maxrate 2M -bufsize 4M -g 20
+      -profile:v high -level:v 4.1 -preset:v superfast -tune:v zerolatency
+      -pix_fmt:v yuv420p
   streams:
     yard_camera:
       # video=0 maps to /dev/video0 inside the container. MJPEG is broadly
       # compatible; diagnose-camera.sh shows what your webcam actually supports.
-      - "ffmpeg:device?video=0&video_size=1280x720&framerate=30&input_format=mjpeg#video=h264"
+      - "ffmpeg:device?video=0&video_size=1280x720&framerate=30&input_format=mjpeg#video=yard_h264"
 
 cameras:
   yard_camera:
@@ -58,7 +65,7 @@ cameras:
       enabled: true
       width: 1280
       height: 720
-      fps: 5
+      fps: 3
     review:
       alerts:
         required_zones:

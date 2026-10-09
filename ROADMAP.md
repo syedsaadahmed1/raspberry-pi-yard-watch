@@ -9,8 +9,8 @@ criteria are verified on the target hardware.
 - [x] Phase 0 — Repository foundation
 - [x] Phase 1 — Raspberry Pi host preparation
 - [x] Phase 2 — Webcam characterization
-- [ ] Phase 3 — First Frigate deployment **(current)**
-- [ ] Phase 4 — Yard-zone and detection tuning
+- [x] Phase 3 — First Frigate deployment
+- [ ] Phase 4 — Yard-zone and detection tuning **(current)**
 - [ ] Phase 5 — Performance and retention testing
 - [ ] Phase 6 — Phone notifications
 - [ ] Phase 7 — Security and reliability hardening
@@ -79,6 +79,12 @@ the Phase 1 reboot. Its machine-specific path is stored only in the ignored loca
 
 Exit criteria: stable video and recording for at least several hours with no
 repeating FFmpeg, permission, storage, or restart errors.
+
+Status: **Complete.** Frigate ran continuously for two days, produced recordings,
+served live video, and recovered automatically after a controlled host reboot.
+Real-scene testing showed that the initial 30 FPS software-encoded stream and
+5 FPS detection baseline were too expensive for efficient Pi-only operation, so
+Phase 4 begins with measured load and storage tuning.
 
 ## Phase 4 — Yard-zone and detection tuning
 
