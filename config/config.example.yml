@@ -40,9 +40,10 @@ snapshots:
 go2rtc:
   ffmpeg:
     # The webcam must be opened at a supported 30 FPS mode. Limit the encoded
-    # restream to 10 FPS and about 2 Mbps to reduce Pi CPU and SSD consumption.
+    # restream to 10 FPS and about 4 Mbps for clearer recordings while keeping
+    # Pi CPU and SSD consumption reasonable.
     yard_h264: >-
-      -c:v libx264 -vf fps=10 -b:v 2M -maxrate 2M -bufsize 4M -g 20
+      -c:v libx264 -vf fps=10 -b:v 4M -maxrate 4M -bufsize 8M -g 20
       -profile:v high -level:v 4.1 -preset:v superfast -tune:v zerolatency
       -pix_fmt:v yuv420p
   streams:
