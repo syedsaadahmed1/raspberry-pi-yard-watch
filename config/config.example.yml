@@ -9,6 +9,11 @@ mqtt:
 objects:
   track:
     - person
+  filters:
+    person:
+      # Suppress tiny distant/noisy detections observed during night testing.
+      # Re-test the farthest legitimate person position after changing this.
+      min_area: 5000
 
 record:
   enabled: true
