@@ -10,9 +10,9 @@ criteria are verified on the target hardware.
 - [x] Phase 1 — Raspberry Pi host preparation
 - [x] Phase 2 — Webcam characterization
 - [x] Phase 3 — First Frigate deployment
-- [ ] Phase 4 — Yard-zone and detection tuning **(current)**
-- [ ] Phase 5 — Performance and retention testing
-- [ ] Phase 6 — Phone notifications
+- [ ] Phase 4 — Yard-zone and detection tuning
+- [x] Phase 5 — Performance and retention testing
+- [ ] Phase 6 — Phone notifications **(current)**
 - [ ] Phase 7 — Security and reliability hardening
 - [ ] Phase 8 — Publish measured results and v1.0
 
@@ -96,6 +96,12 @@ Phase 4 begins with measured load and storage tuning.
 Exit criteria: useful person events are retained only after entering the yard
 zone, with acceptable false positives and missed detections.
 
+Status: **Final validation pending.** The operator intentionally retained a
+full-frame yard zone. A `person.min_area` filter of 5,000 pixels reduced retained
+events from 131 to 66 per day and removed the tiny night detections observed in
+the baseline. A far-field nighttime walk test remains before this phase is
+closed.
+
 ## Phase 5 — Performance and retention testing
 
 - collect CPU, RAM, temperature, detector latency, dropped-frame, and disk data;
@@ -106,6 +112,13 @@ zone, with acceptable false positives and missed detections.
 Exit criteria: a documented multi-day baseline and an evidence-based decision to
 keep Pi-only processing, add an accelerator, or proceed to GMKtec offload.
 
+Status: **Complete.** The tuned Pi-only stack sustained a 720p, 10 FPS, 4 Mbps
+recording stream with 3 FPS detection, no container restarts or thermal
+throttling, and approximately 0.1 skipped FPS in the measured steady state.
+One-day motion retention stabilized near 36 GB on the 128 GB NVMe filesystem.
+Peak detection activity leaves limited expansion headroom, but the single-camera
+deployment is stable enough to keep processing on the Pi.
+
 ## Phase 6 — Phone notifications
 
 - choose native Frigate WebPush or MQTT/Home Assistant;
@@ -114,6 +127,12 @@ keep Pi-only processing, add an accelerator, or proceed to GMKtec offload.
 
 Exit criteria: prompt, actionable phone alerts with no duplicate storm and no
 direct exposure of Frigate or RTSP services to the internet.
+
+Status: **In progress.** Native Frigate WebPush is enabled with a 60-second
+cooldown. Tailscale Serve provides trusted, tailnet-only HTTPS on port 8443, and
+an Android Chrome subscription successfully received a diagnostic notification.
+A real person alert, snapshot behavior, cooldown, and delivery away from the
+home LAN remain to be verified.
 
 ## Phase 7 — Security and reliability hardening
 
